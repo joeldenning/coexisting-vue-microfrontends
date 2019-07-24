@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Your application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="importmap-type" content="systemjs-importmap">
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "navbar": "http://localhost:8080/app.js",
+          "app1": "http://localhost:8081/app.js",
+          "app2": "http://localhost:8082/app.js",
+          "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.6/system/single-spa.min.js"
+        }
+      }
+    </script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.6/system/single-spa.min.js" as="script" crossorigin="anonymous" />
+    <script src="https://unpkg.com/import-map-overrides@1.7.2/dist/import-map-overrides.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/system.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/amd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/named-exports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/named-register.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/use-default.min.js"></script>
+  </head>
+  <body>
+    <script>
+      (function() {
+        var originalResolve = System.resolve
+        var moduleMap = {}
+        System.resolve = function(name) {
+          return originalResolve.apply(this, arguments).then(resolved => {
+            moduleMap[name] = resolved;
+            return resolved;
+          });
+        }
+        window.getModuleUrl = function(name) {
+          if (moduleMap[name]) {
+            return moduleMap[name];
+          } else {
+            throw Error(`Could not find url for module '${name}'`)
+          }
+        }
+
+        System.import('single-spa').then(function (singleSpa) {
+          singleSpa.registerApplication(
+            'navbar',
+            () => System.import('navbar'),
+            location => true
+          );
+
+          singleSpa.registerApplication(
+            'app1',
+            () => System.import('app1'),
+            location => location.pathname.startsWith('/app1')
+          )
+
+          singleSpa.registerApplication(
+            'app2',
+            () => System.import('app2'),
+            location => location.pathname.startsWith('/app2')
+          )
+
+          singleSpa.start();
+        })
+      })()
+    </script>
+    <!-- See https://github.com/joeldenning/import-map-overrides#user-interface  -->
+    <import-map-overrides-full show-when-local-storage="overrides-ui"></import-map-overrides-full>
+  </body>
+</html>

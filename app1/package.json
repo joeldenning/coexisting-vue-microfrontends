@@ -1,0 +1,21 @@
+{
+  "name": "app1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port 8081",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "single-spa-vue": "^1.5.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "vue-cli-plugin-single-spa": "^1.0.0-alpha.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

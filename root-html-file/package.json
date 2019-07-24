@@ -1,0 +1,9 @@
+{
+  "name": "root-html-file",
+  "scripts": {
+    "serve": "serve -s"
+  },
+  "devDependencies": {
+    "serve": "^11.1.0"
+  }
+}
