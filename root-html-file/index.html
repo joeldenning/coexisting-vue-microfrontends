@@ -39,9 +39,15 @@
             return resolved;
           });
         }
-        window.getModuleUrl = function(name) {
-          if (moduleMap[name]) {
-            return moduleMap[name];
+        window.getPublicPath = function(name) {
+          const url = moduleMap[name]
+          if (url) {
+            let index = url.lastIndexOf('/js')
+            if (index < 0) {
+              index = url.lastIndexOf('/')
+            }
+            index++
+            return url.slice(0, index);
           } else {
             throw Error(`Could not find url for module '${name}'`)
           }
