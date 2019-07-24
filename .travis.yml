@@ -1,0 +1,27 @@
+
+# THIS IS NOT HOW YOU SHOULD DO DEPLOYMENTS FOR YOUR ORGANIZATION
+#
+# First off, the sed stuff for modifying import maps is quite hacky and shouldn't
+# be what you rely on.
+#
+# Secondly, each vue app should be in a separate repo and deployed separately, as
+# explained in the README.md.
+language: node_js
+node_js:
+  - "node"
+script:
+  - cd navbar && npm ci && npm run build
+  - cd ../app1 && npm ci && npm run build
+  - cd ../app2 && npm ci && npm run build
+  - cd ..
+  - mkdir -p static/navbar static/app1 static/app2 && cp -a navbar/dist/js/* static/navbar && cp -a app1/dist/js/* static/app1 && cp -a app2/dist/js/* static/app2
+  - cp root-html-file/index.html static
+  - sed -i 's/http:\/\/localhost:8080/static\/navbar/g' static/index.html
+  - sed -i 's/http:\/\/localhost:8081/static\/app1/g' static/index.html
+  - sed -i 's/http:\/\/localhost:8082/static\/app2/g' static/index.html
+  - cp static/index.html static/200.html
+deploy:
+  provider: surge
+  project: ./static/
+  domain: coexisting-vue-microfrontends.surge.sh
+  skip_cleanup: true
