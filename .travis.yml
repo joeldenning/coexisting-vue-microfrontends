@@ -14,7 +14,7 @@ script:
   - cd ../app1 && npm ci && npm run build
   - cd ../app2 && npm ci && npm run build
   - cd ..
-  - mkdir -p static/navbar static/app1 static/app2 && cp -a navbar/dist/ static/navbar && cp -a app1/dist/ static/app1 && cp -a app2/dist/ static/app2
+  - mkdir -p static/navbar static/app1 static/app2 && cp -a navbar/dist/* static/navbar && cp -a app1/dist/* static/app1 && cp -a app2/dist/* static/app2
   - cp root-html-file/index.html static
   - echo "Files that will be deployed"
   - find static
