@@ -1,1 +1,1 @@
-__webpack_public_path__ = window.getPublicPath('navbar')
+__webpack_public_path__ = window.getPublicPath('app1')
