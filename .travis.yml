@@ -18,9 +18,9 @@ script:
   - cp root-html-file/index.html static
   - echo "Files that will be deployed"
   - find static
-  - sed -i 's/http:\/\/localhost:8080/navbar\/js/g' static/index.html
-  - sed -i 's/http:\/\/localhost:8081/app1\/js/g' static/index.html
-  - sed -i 's/http:\/\/localhost:8082/app2\/js/g' static/index.html
+  - sed -i 's/http:\/\/localhost:8080/\/navbar\/js/g' static/index.html
+  - sed -i 's/http:\/\/localhost:8081/\/app1\/js/g' static/index.html
+  - sed -i 's/http:\/\/localhost:8082/\/app2\/js/g' static/index.html
   - cp static/index.html static/200.html
 deploy:
   provider: surge
