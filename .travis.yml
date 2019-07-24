@@ -16,6 +16,8 @@ script:
   - cd ..
   - mkdir -p static/navbar static/app1 static/app2 && cp -a navbar/dist/js/* static/navbar && cp -a app1/dist/js/* static/app1 && cp -a app2/dist/js/* static/app2
   - cp root-html-file/index.html static
+  - echo "Files that will be deployed"
+  - find static
   - sed -i 's/http:\/\/localhost:8080/static\/navbar/g' static/index.html
   - sed -i 's/http:\/\/localhost:8081/static\/app1/g' static/index.html
   - sed -i 's/http:\/\/localhost:8082/static\/app2/g' static/index.html
