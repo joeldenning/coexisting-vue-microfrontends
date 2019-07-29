@@ -1,8 +1,8 @@
 <template>
-  <div id="app1">
+  <span id="app1">
     App1 is working!
     <router-view></router-view>
-  </div>
+  </span>
 </template>
 
 <style>

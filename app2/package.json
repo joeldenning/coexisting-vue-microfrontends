@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "single-spa-vue": "^1.5.2",
+    "single-spa-vue": "^1.5.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
