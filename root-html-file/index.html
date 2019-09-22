@@ -21,38 +21,15 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js" as="script" crossorigin="anonymous" />
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" as="script" crossorigin="anonymous" />
     <script src="https://unpkg.com/import-map-overrides@1.7.2/dist/import-map-overrides.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/system.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/amd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/named-exports.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/named-register.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.1.0/extras/use-default.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/system.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/amd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-exports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-register.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/use-default.min.js"></script>
   </head>
   <body>
     <script>
       (function() {
-        // See https://github.com/systemjs/systemjs/issues/1939
-        var originalResolve = System.resolve
-        var moduleMap = {}
-        System.resolve = function(name) {
-          return originalResolve.apply(this, arguments).then(resolved => {
-            moduleMap[name] = resolved;
-            return resolved;
-          });
-        }
-        window.getPublicPath = function(name) {
-          const url = moduleMap[name]
-          if (url) {
-            let index = url.lastIndexOf('/js')
-            if (index < 0) {
-              index = url.lastIndexOf('/')
-            }
-            index++
-            return url.slice(0, index);
-          } else {
-            throw Error(`Could not find url for module '${name}'`)
-          }
-        }
-
         Promise.all([System.import('single-spa'), System.import('vue'), System.import('vue-router')]).then(function (modules) {
           var singleSpa = modules[0];
           var Vue = modules[1];

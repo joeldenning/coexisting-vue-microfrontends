@@ -1,1 +1,3 @@
-__webpack_public_path__ = window.getPublicPath('navbar')
+import { setPublicPath } from 'systemjs-webpack-interop'
+
+setPublicPath('navbar')
