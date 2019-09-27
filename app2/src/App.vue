@@ -1,6 +1,7 @@
 <template>
   <div id="app2">
     App 2 is working
+    <p>comment me on and off to see HMR</p>
     <router-view></router-view>
   </div>
 </template>
