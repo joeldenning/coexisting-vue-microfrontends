@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 8081",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "local": "NODE_ENV=local vue-cli-service serve --port 8081"
   },
   "dependencies": {
     "core-js": "^2.6.5",
