@@ -29,7 +29,7 @@ npm run serve
 ```
 
 Now go to http://coexisting-vue-microfrontends.surge.sh in a browser. In a browser console, run `localStorage.setItem('overrides-ui', true)`.
-Refresh the page. Now click on the yellowish rectangle at the bottom right. Then click on `app1`. Change the module url to http://localhost:8081/app.js. Then apply the override and reload the page. This will have change app1 to load from your localhost instead of from surge.sh.
+Refresh the page. Now click on the yellowish rectangle at the bottom right. Then click on `app1`. Change the module url to http://localhost:8081/js/app.js. Then apply the override and reload the page. This will have change app1 to load from your localhost instead of from surge.sh.
 As you modify the code locally, it will reload the page on coexisting-vue-microfrontends.surge.sh. See
 https://github.com/joeldenning/import-map-overrides for more info on this.
 
