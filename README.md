@@ -1,6 +1,11 @@
-[![Build Status](https://travis-ci.org/joeldenning/coexisting-vue-microfrontends.svg?branch=master)](https://travis-ci.org/joeldenning/coexisting-vue-microfrontends)
+# Try the newer example repo
+
+The newer example demonstrating Vue Microfrontends can be found at https://github.com/vue-microfrontends and https://vue.microfrontends.app. That example better reflects the microfrontends architecture and is encouraged to use.
 
 # Coexisting Vue Microfrontends
+
+[![Build Status](https://travis-ci.org/joeldenning/coexisting-vue-microfrontends.svg?branch=master)](https://travis-ci.org/joeldenning/coexisting-vue-microfrontends)
+
 Demo: http://coexisting-vue-microfrontends.surge.sh
 
 This is a starter-kit / example repository for people who want to have multiple vue microfrontends coexist within a single page. Each
