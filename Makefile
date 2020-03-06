@@ -1,6 +1,6 @@
 DEFAULT_GOAL := help
 
-port := 5001
+port := 5000
 
 .PHONY: help
 help:
