@@ -20,7 +20,7 @@ clean: ## Clean all endpoints
 	rm */node_modules -rf
 
 .PHONY: start
-start: ## Start all endpoints
+start: install ## Start all endpoints
 	@pushd ./app1 >/dev/null && (npx vue-cli-service serve --port 4001 &) && popd >/dev/null
 	@pushd ./app2 >/dev/null && (npx vue-cli-service serve --port 4002 &) && popd >/dev/null
 	@pushd ./navbar >/dev/null && (npx vue-cli-service serve --port 4003 &) && popd >/dev/null
