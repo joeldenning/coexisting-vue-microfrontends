@@ -10,10 +10,10 @@ help:
 
 .PHONY: install
 install: ## Install all dependencies
+	@pushd ./root-html-file >/dev/null && (npm install &) && popd >/dev/null
 	@pushd ./app1 >/dev/null && (npm install &) && popd >/dev/null
 	@pushd ./app2 >/dev/null && (npm install &) && popd >/dev/null
 	@pushd ./navbar >/dev/null && (npm install &) && popd >/dev/null
-	@pushd ./root-html-file >/dev/null && (npm install &) && popd >/dev/null
 
 .PHONY: clean
 clean: ## Clean all endpoints
@@ -21,10 +21,10 @@ clean: ## Clean all endpoints
 
 .PHONY: start
 start: install ## Start all endpoints
+	@pushd ./root-html-file >/dev/null && (npx serve -s -l 3000 &) && popd >/dev/null
 	@pushd ./app1 >/dev/null && (npx vue-cli-service serve --port 4001 &) && popd >/dev/null
 	@pushd ./app2 >/dev/null && (npx vue-cli-service serve --port 4002 &) && popd >/dev/null
 	@pushd ./navbar >/dev/null && (npx vue-cli-service serve --port 4003 &) && popd >/dev/null
-	@pushd ./root-html-file >/dev/null && (npx serve -s -l 3000 &) && popd >/dev/null
 
 .PHONY: stop
 stop: ## Stop all endpoints
