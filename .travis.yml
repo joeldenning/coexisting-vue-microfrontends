@@ -22,6 +22,8 @@ script:
   - sed -i 's/http:\/\/localhost:8081/\/app1\/js/g' static/index.html
   - sed -i 's/http:\/\/localhost:8082/\/app2\/js/g' static/index.html
   - cp static/index.html static/200.html
+  - echo "Files to deploy"
+  - find static
 deploy:
   provider: surge
   project: ./static/
